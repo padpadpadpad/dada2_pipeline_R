@@ -14,7 +14,7 @@ set.seed(42)
 start_time <- Sys.time()
 
 # load source script with additional functions ####
-source('sequencing/scripts/Extra_Functions.R')
+source('scripts/Extra_Functions.R')
 
 # setup paths and packages and error if previously estimated ####
 # this will automatically create a progress file each time it is run in the progress path
