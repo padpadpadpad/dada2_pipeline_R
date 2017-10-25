@@ -16,7 +16,7 @@ set.seed(42)
 library(dada2)
 
 # load in extra functions
-source('sequencing/scripts/Extra_Functions.R')
+source('scripts/Extra_Functions.R')
 
 # list files in raw path ####
 raw_fastq <- sort(list.files('data/raw_fastq', pattern = 'fast', full.names = TRUE, recursive = T))

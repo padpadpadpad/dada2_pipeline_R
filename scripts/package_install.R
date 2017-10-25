@@ -15,7 +15,8 @@ cran_packages  <-  c("ggplot2",
                      'vegan',
                      "scales", 
                      "phangorn",
-                     'forcats')
+                     'forcats',
+                     'quadprog')
 
 # github
 github_packages <- c('benjjneb/dada2')
