@@ -21,8 +21,8 @@ source('sequencing/scripts/Extra_Functions.R')
 # will create relevant folders if they are not there - raw_path needs to be present as it has the data
 raw_read_setup(
   packages = c('ggplot2', 'gridExtra', 'dada2', 'phyloseq', 'DECIPHER', 'tidyr', 'dplyr'),
-  raw_path = 'data/raw_data',
-  filt_path = 'data/filtered',
+  raw_path = 'data/raw_fastq',
+  filt_path = 'data/filtered_fastq',
   plot_path = 'plots',
   output_path = 'data/output',
   progress_path = 'data/progress',
