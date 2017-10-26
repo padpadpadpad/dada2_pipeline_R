@@ -6,6 +6,10 @@ This workflow is designed around the full stack dada2 and phyloseq workflow for 
 
 The workflow produces and saves output, figures and a progress file separately and stand alone for each run, making it easy to re-run the pipeline with different parameters and keep previous runs. Jump to the example workthrough to what output is saved and an example progress file.
 
+### Issues
+
+Please report any issues to d.padfield@exeter.ac.uk or post in the [Issues tab](https://github.com/padpadpadpad/AB_dada2_pipeline_R/issues)
+
 #### To run
 
 - Download folder using the big `Clone or download` button at the top right of the page. The folder can then be downloaded as as a ZIP file.
