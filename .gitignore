@@ -17,3 +17,6 @@ vignettes/*.pdf
 .Rproj.user
 
 .DS_Store
+
+# ignore reference trainsets
+data/ref_trainsets/*.fa
