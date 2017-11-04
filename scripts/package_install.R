@@ -1,4 +1,4 @@
-# install all the packages necessary to run everything in the sequencing pipeline
+# install all the packages necessary to run everything in the sequencing pipeline ####
 
 # install devtools if necessary
 install.packages('devtools')
@@ -18,20 +18,19 @@ cran_packages  <-  c("ggplot2",
                      'forcats',
                      'quadprog')
 
-# github
-github_packages <- c('benjjneb/dada2')
-
 # bioconductor
 bioc_packages <- c("phyloseq", 
                    "genefilter", 
                    "impute", 
-                   "DECIPHER")
+                   "DECIPHER",
+                   'dada2')
 
 # install all packages
-MicrobioUoE::package_install_all(cran_packages = cran_packages, github_packages = github_packages, bioc_packages = bioc_packages)
+MicrobioUoE::package_install_all(cran_packages = cran_packages, bioc_packages = bioc_packages)
 
-# will give a list of the failed packages
+# Huzzah all packages will be installed
 
-# bingo - re-run to check
-MicrobioUoE::package_install_all(cran_packages = cran_packages, github_packages = github_packages, bioc_packages = bioc_packages)
-# Huzzah
+# to try update bioconductor to newest version
+# This will update all packages
+source("https://bioconductor.org/biocLite.R")
+biocLite("BiocUpgrade")

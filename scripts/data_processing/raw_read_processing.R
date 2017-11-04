@@ -17,6 +17,9 @@ start_time <- Sys.time()
 # this will automatically set up the environment to run the analysis
 MicrobioUoE::dada2_raw_read_setup(meta_data = 'data/metadata_example.csv')
 
+# get time
+time <- paste0(basename(plot_path), '_', collapse = '')
+
 cat(paste('\nThis run is done using raw_read_processing.R'), file = progress_file, append = TRUE)
 
 # list files ####
@@ -270,7 +273,7 @@ ps <- phyloseq(tax_table(taxtab),
 saveRDS(ps, paste(output_path, '/', time, 'ps.rds', sep = ''))
 save(ps, file = paste(output_path, '/', time, 'ps.Rdata', sep = ''))
 
-cat(paste('\nEnd of raw read processing', Sys.time()), file = progress_file, append = TRUE)sam
+cat(paste('\nEnd of raw read processing', Sys.time()), file = progress_file, append = TRUE)
 
 # End time
 end_time <- Sys.time()

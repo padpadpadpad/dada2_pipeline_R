@@ -1,0 +1,34 @@
+Run started at  2017-11-03 23:27:33
+
+This run is done using raw_read_processing.R
+Filtering completed at  2017-11-03 23:11
+Forward error rates completed at 2017-11-03 23:47:05
+Forward error rate: 68.6218264955491 
+Forward error rate: 1.4268482212032 
+Forward error rate: 0.0806254374037106 
+Forward error rate: 0.0045528251682451 
+Forward error rate: 0.000171459734376565 
+Forward error rate: 0
+Reverse error rates completed at 2017-11-04 00:04:47
+Reverse error rates: 65.4204274041772 
+Reverse error rates: 1.28380362213372 
+Reverse error rates: 0.0450086135629872 
+Reverse error rates: 0.00562287641467286 
+Reverse error rates: 0.00151911546430804 
+Reverse error rates: 0
+Processing: 1 of 4 : sample_1 2017-11-04 00:04:47
+Processing: 2 of 4 : sample_2 2017-11-04 00:06:03
+Processing: 3 of 4 : sample_3 2017-11-04 00:07:34
+Processing: 4 of 4 : sample_4 2017-11-04 00:08:40
+Sequence table constructed 2017-11-04 00:11:01
+Chimeric sequences removed 2017-11-04 00:11:20
+Taxonomy assigned 2017-11-04 00:17:06
+Assigning species at 2017-11-04 00:17:06 
+69 out of 1411 were assigned to the species level. Of which 63 had genera consistent with the input table.
+Species assigned 2017-11-04 00:18:45
+End of raw read processing without construction of phylogeny 2017-11-04 00:18:53
+This run (without phylogeny estimation) took: 0.855512890285916 hours
+Sequences aligned 2017-11-04 00:20:20
+Constructed phylogenetic tree 2017-11-04 02:47:57
+End of raw read processing 2017-11-04 02:47:58
+This run took: 3.34020384000407 hours

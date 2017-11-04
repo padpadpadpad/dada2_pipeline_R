@@ -15,7 +15,10 @@ start_time <- Sys.time()
 
 # setup paths and packages and error if previously estimated ####
 # this will automatically set up the environment to run the analysis
-MicrobioUoE::dada2_raw_read_setup()
+MicrobioUoE::dada2_raw_read_setup(meta_data = 'data/metadata_example.csv')
+
+# get time
+time <- paste0(basename(plot_path), '_', collapse = '')
 
 cat(paste('\nThis run is done using raw_read_processing.R'), file = progress_file, append = TRUE)
 
