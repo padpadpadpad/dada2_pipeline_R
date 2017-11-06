@@ -1,12 +1,13 @@
-# install all the packages necessary to run everything in the sequencing pipeline ####
+# install all the packages necessary to run the sequencing pipeline ####
 
 # install devtools if necessary
 install.packages('devtools')
 
-# install MicrobioUoE
+# install MicrobioUoE - a padpadpadpad R package
+# https://github.com/padpadpadpad/MicrobioUoE
 devtools::install_github('padpadpadpad/MicrobioUoE')
 
-# list packages ####
+# list packages to install ####
 # cran
 cran_packages  <-  c("ggplot2",
                      "dplyr",
@@ -25,12 +26,12 @@ bioc_packages <- c("phyloseq",
                    "DECIPHER",
                    'dada2')
 
-# install all packages
+# install all packages ####
 MicrobioUoE::package_install_all(cran_packages = cran_packages, bioc_packages = bioc_packages)
 
 # Huzzah all packages will be installed
 
-# to try update bioconductor to newest version
+# to try update bioconductor to newest version ####
 # This will update all packages
 source("https://bioconductor.org/biocLite.R")
 biocLite("BiocUpgrade")
