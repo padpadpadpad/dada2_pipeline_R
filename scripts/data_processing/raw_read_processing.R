@@ -54,10 +54,10 @@ if(run_filter == 'Y'){
   
   # check quality of data ####
   pdf(file.path(plot_path, 'qual_plot_preFilt.pdf'))
-  plotQualityProfile(mast_pre_filtF, n = 2e6) +
-    ggtitle('Fwd reads master quality profile')
-  plotQualityProfile(mast_pre_filtR, n = 2e6) +
-    ggtitle('Rev reads master quality profile')
+  print(plotQualityProfile(mast_pre_filtF, n = 2e6) +
+    ggtitle('Fwd reads master quality profile'))
+  print(plotQualityProfile(mast_pre_filtR, n = 2e6) +
+    ggtitle('Rev reads master quality profile'))
   dev.off()
   
   # Trim and filter ####
@@ -83,10 +83,10 @@ if(run_filter == 'Y'){
   system(paste('cat', paste(filtRs, collapse = ' '), '>', mast_post_filtR, sep = ' '))
   
   pdf(file.path(plot_path, 'qual_plot_postFilt.pdf'))
-  plotQualityProfile(mast_post_filtF, n = 2e6) +
-    ggtitle('Fwd reads master quality profile')
-  plotQualityProfile(mast_post_filtR, n = 2e6) +
-    ggtitle('Rev reads master quality profile')
+  print(plotQualityProfile(mast_post_filtF, n = 2e6) +
+    ggtitle('Fwd reads master quality profile'))
+  print(plotQualityProfile(mast_post_filtR, n = 2e6) +
+    ggtitle('Rev reads master quality profile'))
   dev.off()
   
   # add update to progress file
