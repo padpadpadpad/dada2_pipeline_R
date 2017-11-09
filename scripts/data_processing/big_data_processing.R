@@ -20,7 +20,7 @@ MicrobioUoE::dada2_raw_read_setup(meta_data = 'data/metadata_example.csv')
 # get time
 time <- paste0(basename(plot_path), '_', collapse = '')
 
-cat(paste('\nThis run is done using raw_read_processing.R'), file = progress_file, append = TRUE)
+cat(paste('\nThis run is done using big_data_processing.R'), file = progress_file, append = TRUE)
 
 # list files ####
 fns <- sort(list.files(raw_path, pattern = 'fast', full.names = TRUE, recursive = T))
@@ -83,10 +83,10 @@ if(run_filter == 'Y'){
   system(paste('cat', paste(filtRs, collapse = ' '), '>', mast_post_filtR, sep = ' '))
   
   pdf(file.path(plot_path, 'qual_plot_postFilt.pdf'))
-  plotQualityProfile(mast_post_filtF, n = 2e6) +
-    ggtitle('Fwd reads master quality profile')
-  plotQualityProfile(mast_post_filtR, n = 2e6) +
-    ggtitle('Rev reads master quality profile')
+  print(plotQualityProfile(mast_post_filtF, n = 2e6) +
+    ggtitle('Fwd reads master quality profile'))
+  print(plotQualityProfile(mast_post_filtR, n = 2e6) +
+    ggtitle('Rev reads master quality profile'))
   dev.off()
   
   # add update to progress file
