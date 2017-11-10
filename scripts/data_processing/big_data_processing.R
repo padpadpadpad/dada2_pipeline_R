@@ -44,19 +44,11 @@ if(all(sample_namesF %in% meta$SampleID) == FALSE) stop("Forward and reverse fil
 # this can be based on the quality profiles in qual_plot_preFilt.pdf
 if(run_filter == 'Y'){
   
-  # create filenames
-  mast_pre_filtF <- paste0(file.path(output_path, 'fwd_master_preFilt_'), basename(plot_path), '.fastq', collapse = '')
-  mast_pre_filtR <- paste0(file.path(output_path, 'rev_master_preFilt_'), basename(plot_path), '.fastq', collapse = '')
-  
-  # create master forward and reverse files ####
-  system(paste('cat', paste(fnFs, collapse = ' '), '>', mast_pre_filtF, sep = ' '))
-  system(paste('cat', paste(fnRs, collapse = ' '), '>', mast_pre_filtR, sep = ' '))
-  
   # check quality of data ####
   pdf(file.path(plot_path, 'qual_plot_preFilt.pdf'))
-  plotQualityProfile(mast_pre_filtF, n = 2e6) +
+  plotQualityProfile(mast_pre_filtF, n = 2e6, aggregate = TRUE) +
     ggtitle('Fwd reads master quality profile')
-  plotQualityProfile(mast_pre_filtR, n = 2e6) +
+  plotQualityProfile(mast_pre_filtR, n = 2e6, aggregate = TRUE) +
     ggtitle('Rev reads master quality profile')
   dev.off()
   
@@ -74,18 +66,10 @@ if(run_filter == 'Y'){
                        compress=TRUE,
                        multithread = TRUE)
   
-  # plot quality post filtering ####
-  mast_post_filtF <- paste0(file.path(output_path, 'fwd_master_postFilt_'), basename(plot_path), '.fastq', collapse = '')
-  mast_post_filtR <- paste0(file.path(output_path, 'rev_master_postFilt_'), basename(plot_path), '.fastq', collapse = '')
-  
-  # create master forward and reverse files
-  system(paste('cat', paste(filtFs, collapse = ' '), '>', mast_post_filtF, sep = ' '))
-  system(paste('cat', paste(filtRs, collapse = ' '), '>', mast_post_filtR, sep = ' '))
-  
   pdf(file.path(plot_path, 'qual_plot_postFilt.pdf'))
-  print(plotQualityProfile(mast_post_filtF, n = 2e6) +
+  print(plotQualityProfile(mast_post_filtF, n = 2e6, aggregate = TRUE) +
     ggtitle('Fwd reads master quality profile'))
-  print(plotQualityProfile(mast_post_filtR, n = 2e6) +
+  print(plotQualityProfile(mast_post_filtR, n = 2e6, aggregate = TRUE) +
     ggtitle('Rev reads master quality profile'))
   dev.off()
   
