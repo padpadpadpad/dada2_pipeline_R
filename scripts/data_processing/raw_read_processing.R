@@ -46,9 +46,9 @@ if(run_filter == 'Y'){
   
   # check quality of data ####
   pdf(file.path(plot_path, 'qual_plot_preFilt.pdf'))
-  print(plotQualityProfile(mast_pre_filtF, n = 2e6, aggregate = TRUE) +
+  print(plotQualityProfile(fnFs, n = 2e6, aggregate = TRUE) +
     ggtitle('Fwd reads master quality profile'))
-  print(plotQualityProfile(mast_pre_filtR, n = 2e6, aggregate = TRUE) +
+  print(plotQualityProfile(fnRs, n = 2e6, aggregate = TRUE) +
     ggtitle('Rev reads master quality profile'))
   dev.off()
   
@@ -68,9 +68,9 @@ if(run_filter == 'Y'){
   
 
   pdf(file.path(plot_path, 'qual_plot_postFilt.pdf'))
-  print(plotQualityProfile(mast_post_filtF, n = 2e6, aggregate = TRUE) +
+  print(plotQualityProfile(filtFs, n = 2e6, aggregate = TRUE) +
     ggtitle('Fwd reads master quality profile'))
-  print(plotQualityProfile(mast_post_filtR, n = 2e6, aggregate = TRUE) +
+  print(plotQualityProfile(filtRs, n = 2e6, aggregate = TRUE) +
     ggtitle('Rev reads master quality profile'))
   dev.off()
   

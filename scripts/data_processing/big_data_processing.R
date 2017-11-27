@@ -46,9 +46,9 @@ if(run_filter == 'Y'){
   
   # check quality of data ####
   pdf(file.path(plot_path, 'qual_plot_preFilt.pdf'))
-  plotQualityProfile(mast_pre_filtF, n = 2e6, aggregate = TRUE) +
+  plotQualityProfile(fnFs, n = 2e6, aggregate = TRUE) +
     ggtitle('Fwd reads master quality profile')
-  plotQualityProfile(mast_pre_filtR, n = 2e6, aggregate = TRUE) +
+  plotQualityProfile(fnRs, n = 2e6, aggregate = TRUE) +
     ggtitle('Rev reads master quality profile')
   dev.off()
   
@@ -67,17 +67,14 @@ if(run_filter == 'Y'){
                        multithread = TRUE)
   
   pdf(file.path(plot_path, 'qual_plot_postFilt.pdf'))
-  print(plotQualityProfile(mast_post_filtF, n = 2e6, aggregate = TRUE) +
+  print(plotQualityProfile(filtFs, n = 2e6, aggregate = TRUE) +
     ggtitle('Fwd reads master quality profile'))
-  print(plotQualityProfile(mast_post_filtR, n = 2e6, aggregate = TRUE) +
+  print(plotQualityProfile(filtRs, n = 2e6, aggregate = TRUE) +
     ggtitle('Rev reads master quality profile'))
   dev.off()
   
   # add update to progress file
   cat(paste('\nFiltering completed at ', format(Sys.time(), '%Y-%m-%d %H:%m')), file = progress_file, append = TRUE)
-  
-  # remove some objects
-  rm(list = c('mast_pre_filtF', 'mast_post_filtF', 'mast_pre_filtR', 'mast_post_filtR'))
   
 }
 
