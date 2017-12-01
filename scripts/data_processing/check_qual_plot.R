@@ -19,6 +19,9 @@ library(ggplot2)
 # load in extra functions
 source('scripts/Extra_Functions.R')
 
+# set plot_path
+plot_path <- 'plots'
+
 # list files in raw path ####
 raw_fastq <- sort(list.files('data/raw_fastq', pattern = 'fast', full.names = TRUE, recursive = T))
 
@@ -26,24 +29,16 @@ raw_fastq <- sort(list.files('data/raw_fastq', pattern = 'fast', full.names = TR
 fnFs <- raw_fastq[grepl("R1", raw_fastq)]
 fnRs <- raw_fastq[grepl("R2", raw_fastq)]
 
-# Method 1 - create master Fwd and Rev Quality profiles ####
-# create one big fastq file for Fwd and Rev and create single quality plots - suppose this could take a very long time for very big datasets
-
-system(paste('cat', paste(fnFs, collapse = ' '), '> data/fwd_master.fastq', sep = ' '))
-system(paste('cat', paste(fnFs, collapse = ' '), '> data/rev_master.fastq', sep = ' '))
-
-# save plots out
-pdf(file.path('plots', 'master_quality_profile.pdf'))
-plotQualityProfile('data/fwd_master.fastq', n = 2e6) +
+# check quality of data ####
+pdf(file.path(plot_path, 'qual_plot_preFilt.pdf'))
+plotQualityProfile(fnFs, n = 2e6, aggregate = TRUE) +
   ggtitle('Fwd reads master quality profile')
-plotQualityProfile('data/rev_master.fastq', n = 2e6) +
+plotQualityProfile(fnRs, n = 2e6, aggregate = TRUE) +
   ggtitle('Rev reads master quality profile')
 dev.off()
 
 # Method 2 - single quality profile for every single sample ####
 plot_qual(file.path('plots', 'qual_plot_raw_fastq.pdf'), fnFs, fnRs, height = 5, width = 7)
-
-# examine this plot and set trimming parameters
 
 
 

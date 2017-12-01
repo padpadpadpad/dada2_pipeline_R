@@ -34,11 +34,23 @@ fnRs <- fns[grepl("R2", fns)]
 sample_namesF <- paste('sample', gsub('_.*', '', basename(fnFs)), sep = '_')
 sample_namesR <- paste('sample', gsub('_.*', '', basename(fnRs)), sep = '_')
 
+####################
+##### CHECKS #######
+####################
+
 # check Fwd and Rev files are in the same order
 if(!identical(sample_namesF, sample_namesR)) stop("Forward and reverse files do not match.")
 
 # check Fwd and Rev files are in the SampleID column of the meta data
 if(all(sample_namesF %in% meta$SampleID) == FALSE) stop("Forward and reverse file names are not present in metadata column SampleID")
+
+# check that ref_trainsets are present
+if(file.exists(ref_fasta) == FALSE) stop("reference trainset, ref_fasta, is not in data/ref_trainset. Please make sure file has correct spelling and is present in the correct folder.")
+if(!is.null(ref_fasta_spp)){
+  if(file.exists(ref_fasta_spp) == FALSE) stop("reference trainset for species assignment, ref_fasta_spp, is not in data/ref_trainset. Please make sure file has correct spelling and is present in the correct folder.")
+}
+
+####################
 
 # run filter parameters ####
 # this can be based on the quality profiles in qual_plot_preFilt.pdf
