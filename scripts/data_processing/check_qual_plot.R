@@ -15,9 +15,7 @@ set.seed(42)
 # load in packages
 library(dada2)
 library(ggplot2)
-
-# load in extra functions
-source('scripts/Extra_Functions.R')
+library(MicrobioUoE)
 
 # set plot_path
 plot_path <- 'plots'
@@ -38,7 +36,7 @@ plotQualityProfile(fnRs, n = 2e6, aggregate = TRUE) +
 dev.off()
 
 # Method 2 - single quality profile for every single sample ####
-plot_qual(file.path('plots', 'qual_plot_raw_fastq.pdf'), fnFs, fnRs, height = 5, width = 7)
+MicrobioUoE::plot_qual_profs(file.path('plots', 'qual_plot_raw_fastq.pdf'), fnFs, fnRs, height = 5, width = 7)
 
 
 
