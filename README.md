@@ -1,4 +1,4 @@
-## Outline
+# Outline
 
 A shell of the pipeline to run sequencing analyses for the Buckling lab (and beyond) based on the dada2 workflow implemented in R.
 
@@ -6,11 +6,13 @@ This workflow is designed around the full stack dada2 and phyloseq workflow for 
 
 The workflow produces and saves output, figures and a progress file separately and stand alone for each run, making it easy to re-run the pipeline with different parameters and keep previous runs. Jump to the example workthrough to what output is saved and an example progress file.
 
-### Issues
+## Issues
 
 Please report any issues to d.padfield@exeter.ac.uk or post in the [Issues tab](https://github.com/padpadpadpad/AB_dada2_pipeline_R/issues)
 
-#### To run
+## To run
+
+### Data Processing
 
 - Download folder using the big `Clone or download` button at the top right of the page. The folder can then be downloaded as as a ZIP file.
 - Place folder in a suitable place but maintain the same folder structure.
@@ -18,10 +20,23 @@ Please report any issues to d.padfield@exeter.ac.uk or post in the [Issues tab](
 - Download [dada2 compatible reference](https://benjjneb.github.io/dada2/training.html) databases and place in `data/ref_trainsets`.
 - Open the `.Rproj` file to set the working directory to the root directory.
 - Run `scripts/package_install.R` to install all necessary packages needed for the current analyses (or I hope so)!
-- Run `scripts/data_processing/check_qual_plot.R` to produce quality plots for each sample to decide on trimming parameters. The file will be saved in `figs`
+- Run `scripts/data_processing/check_quality_plots.R` to produce quality plots for each sample to decide on trimming parameters. The file will be saved in `figs`
 - Run either `big_data_processing.R` or `raw_read_processing.R` to end up with data suitable for downstream analyses.
+- For large datasets, the default way of making a phylogenetic tree in `phangorn` can be painfully slow. If this is the case and the script has created an alignment fasta file, you can run `scripts/data_processing/FastTree_phylo_tree_build.R` and it will make a phylogenetic tree using [FastTree](http://www.microbesonline.org/fasttree/). This is an R script but calls FastTree using __system()__ and will create a new phyloseq object with the tree from FastTree.
+- At the end of data processing, it is likely there might be lots of folders in `output` that will not have very many files in, `data_processing/clean_up_folders.R` goes through the folders that contain output and deletes them if they are under a certain size.
 
-#### Workthrough with example data 
+### Data Analysis
+
+As I had not done many analyses using amplicon sequence data and am learning all the time, very rudimentary and basic scripts for some of the usual analyses are available here. They are available as __.Rmd__, __html__ and __.R__ files.
+
+- my_first_prevalence_filter:
+- my_first_rarefaction_curve:
+- my_first_clustering: a script to load in your phyloseq object, perform a clustering analysis and plot the data. It also runs through an example permutational anova using __vegan::adonis()__ and homeogeneity of variances using __vegan::betadisper()__.
+- my_first_differential_abundance: a script to perform a very simple differential abundance analysis. The data is agglomerated at a specified taxonomic resolution/ The proportion of each taxa in each sample is then calculated and plotted against treatments. These can then be analysed in a linear model.
+
+### Tutorial
+
+
 
 #### References
 
