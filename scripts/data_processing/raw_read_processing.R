@@ -239,7 +239,18 @@ cat(paste('\nThis run (without phylogeny estimation) took:', difftime(end_time, 
 # multiple alignment ####
 seqs <- getSequences(seqtab)
 names(seqs) <- seqs # This propagates to the tip labels of the tree
+
+# DNA string set
+seqs <- DNAStringSet(seqs)
+seqs <- OrientNucleotides(seqs)
+
+# align sequences
 alignment <- AlignSeqs(DNAStringSet(seqs), anchor = NA)
+
+# save alignment
+phang_align <- phangorn::phyDat(as(alignment, "matrix"), type = "DNA")
+phangorn::write.phyDat(phang_align, file = paste(output_path, '/', time, "alignment.fasta", sep = ''), format = "fasta")
+
 cat(paste('\nSequences aligned', Sys.time()), file = progress_file, append = TRUE)
 
 # construct phylogenetic tree using phangorn ####
