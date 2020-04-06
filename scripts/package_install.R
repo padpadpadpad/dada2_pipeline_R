@@ -1,11 +1,20 @@
+#----------------------------------------------------------------------#
 # install all the packages necessary to run the sequencing pipeline ####
+#----------------------------------------------------------------------#
 
-# install devtools if necessary
-install.packages('devtools')
+# install remotes if necessary
+install.packages('remotes')
 
 # install MicrobioUoE - a padpadpadpad R package
 # https://github.com/padpadpadpad/MicrobioUoE
-devtools::install_github('padpadpadpad/MicrobioUoE')
+remotes::install_github('padpadpadpad/MicrobioUoE')
+
+# some packages live on CRAN and some are only available through bioconductor
+
+# we first need to check Bioconductor is installed and working correctly
+if (!requireNamespace("BiocManager", quietly = TRUE))
+  install.packages("BiocManager")
+BiocManager::install(version = "3.10")
 
 # list packages to install ####
 # cran
@@ -30,8 +39,3 @@ bioc_packages <- c("phyloseq",
 MicrobioUoE::package_install_all(cran_packages = cran_packages, bioc_packages = bioc_packages)
 
 # Huzzah all packages will be installed
-
-# to try update bioconductor to newest version ####
-# This will update all packages
-source("https://bioconductor.org/biocLite.R")
-biocLite("BiocUpgrade")
