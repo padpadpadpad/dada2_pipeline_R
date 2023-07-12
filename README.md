@@ -8,7 +8,8 @@ The workflow is a work in progress. I am currently trying to update it and aim t
 
 ## Updates
 
-12/07/2023 - Dumped a bunch of new scripts into `scripts/data_processing.R`.
+- 12/07/2023 - Started writing a new script of the whole pipeline called `scripts/data_processing/full_dada2_pipeline.R`
+- 12/07/2023 - Dumped a bunch of new scripts into `scripts/data_processing`.
 
 ## Issues
 
