@@ -1,14 +1,18 @@
 # Outline
 
-A shell of the pipeline to run sequencing analyses for the Buckling lab (and beyond) based on the dada2 workflow implemented in R.
+A pipeline to run amplicon sequencing analyses for the Buckling lab (and beyond) based on the dada2 workflow implemented in R.
 
 This workflow is designed around the full stack dada2 and phyloseq workflow for microbiome analyses (Callahan _et al._ 2016, [link](https://f1000research.com/articles/5-1492/v2)). More documentation and information on dada2 can be found on the package's [website](https://benjjneb.github.io/dada2/index.html).
 
-The workflow produces and saves output, figures and a progress file separately and stand alone for each run, making it easy to re-run the pipeline with different parameters and keep previous runs. Jump to the example workthrough to what output is saved and an example progress file.
+The workflow is a work in progress. I am currently trying to update it and aim to have it working with [targets](https://books.ropensci.org/targets/) but that might be a bit ambitious. At the very least we will aggregate all the scripts we already have and make a more sensible, and reuseable, workflow that can be followed.
+
+## Updates
+
+12/07/2023 - Dumped a bunch of new scripts into `scripts/data_processing.R`.
 
 ## Issues
 
-Please report any issues to d.padfield@exeter.ac.uk or post in the [Issues tab](https://github.com/padpadpadpad/AB_dada2_pipeline_R/issues)
+Please report any issues to d.padfield@exeter.ac.uk or post in the [Issues tab](https://github.com/padpadpadpad/AB_dada2_pipeline_R/issues). Or if you are at the University of Exeter you can chat to me informally on Microsoft Teams.
 
 ## To run
 
@@ -33,10 +37,6 @@ As I had not done many analyses using amplicon sequence data and am learning all
 - my_first_rarefaction_curve:
 - my_first_clustering: a script to load in your phyloseq object, perform a clustering analysis and plot the data. It also runs through an example permutational anova using __vegan::adonis()__ and homeogeneity of variances using __vegan::betadisper()__.
 - my_first_differential_abundance: a script to perform a very simple differential abundance analysis. The data is agglomerated at a specified taxonomic resolution/ The proportion of each taxa in each sample is then calculated and plotted against treatments. These can then be analysed in a linear model.
-
-### Tutorial
-
-
 
 #### References
 
